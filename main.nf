@@ -541,14 +541,14 @@ process report {
         report_name = "wf-clone-validation-report.html"
         String stats_args = no_stats ? "" : "--per_barcode_stats per_barcode_stats/*"
         def metadata_obj = new JsonBuilder(metadata)
-        String metadata = metadata_obj.toPrettyString()
+        String metadata_pretty = metadata_obj.toPrettyString()
         String client_fields_args = client_fields.name != "OPTIONAL_FILE" ? "--client_fields ${client_fields}" : ""
         String cutsite = cutsite_csv.fileName.name == "OPTIONAL_FILE" ? "" : "--cutsite_csv cutsite_csv/*"
         String insert_bamstats = insert_bamstats.fileName.name == "OPTIONAL_FILE" ? "" : "--insert_alignment_bamstats insert_bamstats/*"
         String assembly_bamstats = assembly_bamstats.fileName.name == "OPTIONAL_FILE" ? "" : "--reference_alignment_bamstats assembly_bamstats/*"
         String full_assembly_variants = full_assembly_variants.fileName.name == "OPTIONAL_FILE" ? "" : "--full_assembly_variants full_assembly_variants"
     """
-    echo '${metadata}' > metadata.json
+    echo '${metadata_pretty}' > metadata.json
   
 
    
