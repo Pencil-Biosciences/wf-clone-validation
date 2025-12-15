@@ -4,15 +4,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [unreleased]
+## [v1.8.4]
 ### Added
 - Added support for data with v5.2.0 basecalling models.
     - Updated docker image to use Medaka v2.2.0.
 ### Changed
-- Updated to wf-template v5.6.3 to maintain compliance with our latest wf-template standard, changing:
+- Updated to wf-template v5.7.0 to maintain compliance with our latest wf-template standard, changing:
   - Pipeline overview now appears before pipeline parameters in README.
   - ezCharts plotting library has been updated to 0.15.1, there are no user facing changes to plots.
   - Fastcat FASTQ pre-processing program has been updated to 0.24.2, it is more robust to malformed FASTQ input.
+- CHANGELOG to be compliant with our formatting rules.
+### Fixed
+- Updated to wf-template v5.7.0 to maintain compliance with our latest wf-template standard, fixing:
+  - ezCharts plotting library has been updated to 0.15.2 to solve incompatibilities between the MSA plotting tool `pymsaviz` and `biopython`
 
 ## [v1.8.3]
 This patch release of `wf-clone-validation` updates the `pLannotate` container image to ensure the workflow can be correctly executed on computers with ARM processors. Users do not need to adopt this release unless they are using the workflow on a computer with an ARM processor.
@@ -268,7 +272,7 @@ This is a re-release of v1.7.1 with support for MinKNOW integration.
 ### Fixed
 - Filter host step not outputting approx_size.
 
-### Updated
+### Changed
 - Use groovy script to ping after workflow has run.
 
 ## [v0.2.4]
@@ -299,9 +303,7 @@ This is a re-release of v1.7.1 with support for MinKNOW integration.
 ### Changed
 - Better help text on CLI.
 - Fix issue with S3 file inputs.
-
-### Updated
-- Plannotate to version v1.2.0
+- Plannotate updated to version v1.2.0
 
 ## [v0.1.9]
 ### Added
@@ -402,5 +404,5 @@ This is a re-release of v1.7.1 with support for MinKNOW integration.
 - simplified assembly outputs, to only emit the final polished assembly
 
 ## [v0.0.1]
-* First release
+First release
 
