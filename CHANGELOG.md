@@ -4,6 +4,48 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.8.4]
+### Added
+- Added support for data with v5.2.0 basecalling models.
+    - Updated docker image to use Medaka v2.2.0.
+### Changed
+- Updated to wf-template v5.7.0 to maintain compliance with our latest wf-template standard, changing:
+  - Pipeline overview now appears before pipeline parameters in README.
+  - ezCharts plotting library has been updated to 0.15.1, there are no user facing changes to plots.
+  - Fastcat FASTQ pre-processing program has been updated to 0.24.2, it is more robust to malformed FASTQ input.
+- CHANGELOG to be compliant with our formatting rules.
+### Fixed
+- Updated to wf-template v5.7.0 to maintain compliance with our latest wf-template standard, fixing:
+  - ezCharts plotting library has been updated to 0.15.2 to solve incompatibilities between the MSA plotting tool `pymsaviz` and `biopython`
+
+## [v1.8.3]
+This patch release of `wf-clone-validation` updates the `pLannotate` container image to ensure the workflow can be correctly executed on computers with ARM processors. Users do not need to adopt this release unless they are using the workflow on a computer with an ARM processor.
+### Fixed
+- Updated pLannotate Docker image to natively support ARM processors.
+
+## [v1.8.2]
+This patch release of `wf-clone-validation` updates the `Canu` container image to ensure the workflow can be correctly executed on computers with ARM processors. Users do not need to adopt this release unless they are using the workflow on a computer with an ARM processor and are using `Canu` as the assembler.
+
+### Fixed
+- Updated Canu Docker image to natively support ARM processors.
+
+## [v1.8.1]
+This patch release of wf-clone-validation addresses an edge case error occurring during the reorientation process and fixes the N50 displayed in the report. All other workflow outputs are not affected.
+### Changed
+- Updated to wf-template v5.6.2, changing:
+    - Reduce verbosity of debug logging from fastcat which can occasionally occlude errors found in FASTQ files during ingress.
+    - Log banner art to say "EPI2ME" instead of "EPI2ME Labs" to match current branding. This has no effect on the workflow outputs.
+    - pre-commit configuration to resolve an internal dependency problem with flake8. This has no effect on the workflow.
+- Removed 'workflow' suffix from workflow title for display in EPI2ME Desktop.
+
+### Fixed
+- Updated to wf-template v5.6.2, fixing:
+    - dacite.exceptions.WrongTypeError during report generation when barcode is null.
+    - Sequence summary read length N50 incorrectly displayed minimum read length, it now correctly shows the N50.
+    - Sequence summary component alignment and coverage plots failed to plot under some conditions.
+- The reorientation process breaking with the error `new start exceeds length of sequence`. Reorientation will now not be attempted if the assembly and reference do not align with >50% coverage.
+
+
 ## [v1.8.0]
 ### Changed
 - Updated pass/fail badges in report sample status table.
@@ -230,7 +272,7 @@ This is a re-release of v1.7.1 with support for MinKNOW integration.
 ### Fixed
 - Filter host step not outputting approx_size.
 
-### Updated
+### Changed
 - Use groovy script to ping after workflow has run.
 
 ## [v0.2.4]
@@ -261,9 +303,7 @@ This is a re-release of v1.7.1 with support for MinKNOW integration.
 ### Changed
 - Better help text on CLI.
 - Fix issue with S3 file inputs.
-
-### Updated
-- Plannotate to version v1.2.0
+- Plannotate updated to version v1.2.0
 
 ## [v0.1.9]
 ### Added
@@ -364,5 +404,5 @@ This is a re-release of v1.7.1 with support for MinKNOW integration.
 - simplified assembly outputs, to only emit the final polished assembly
 
 ## [v0.0.1]
-* First release
+First release
 
